@@ -2,13 +2,13 @@
 /**
  * The BlockLibraryServiceProvider class.
  *
- * @package PluginWP
+ * @package LastFMProfileBlocks
  */
 
-namespace PluginWP\BlockLibrary;
+namespace LastFMProfileBlocks\BlockLibrary;
 
-use PluginWP\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
-use PluginWP\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
+use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
 /**
  * The BlockLibraryServiceProvider class.

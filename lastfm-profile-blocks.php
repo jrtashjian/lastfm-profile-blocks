@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name: PluginWP
- * Plugin URI: https://pluginwp.com
- * Description: PluginWP Plugin Description.
+ * Plugin Name: LastFMProfileBlocks
+ * Plugin URI: https://jrtashjian.com
+ * Description: LastFMProfileBlocks Plugin Description.
  * Version: 0.0.1
- * Requires at least: 6.0
+ * Requires at least: 6.8
  * Requires PHP: 7.4
- * Author: PluginWP Author
- * Author URI: https://pluginwp.com
- * Text Domain: pluginwp
+ * Author: JR Tashjian
+ * Author URI: https://jrtashjian.com
+ * Text Domain: lastfm-profile-blocks
  * Domain Path: /languages
  *
- * Copyright 2019-2023 PluginWP Author
+ * Copyright 2019-2023 JR Tashjian
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,13 +26,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  *
- * @package PluginWP
+ * @package LastFMProfileBlocks
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // Guard the plugin from initializing more than once.
-if ( class_exists( \PluginWP\Application::class ) ) {
+if ( class_exists( \LastFMProfileBlocks\Application::class ) ) {
 	return;
 }
 
@@ -43,19 +43,19 @@ require_once __DIR__ . '/vendor/autoload.php';
  *
  * @return Application The application container.
  */
-function pluginwp() {
-	return \PluginWP\Application::get_instance();
+function lastfm_profile_blocks() {
+	return \LastFMProfileBlocks\Application::get_instance();
 }
 
-pluginwp()->set_base_path( __FILE__ );
+lastfm_profile_blocks()->set_base_path( __FILE__ );
 
 /**
  * Service Providers.
  */
-pluginwp()->addServiceProvider( new \PluginWP\Plugin\PluginServiceProvider() );
-pluginwp()->addServiceProvider( new \PluginWP\BlockLibrary\BlockLibraryServiceProvider() );
+lastfm_profile_blocks()->addServiceProvider( new \LastFMProfileBlocks\Plugin\PluginServiceProvider() );
+lastfm_profile_blocks()->addServiceProvider( new \LastFMProfileBlocks\BlockLibrary\BlockLibraryServiceProvider() );
 
-register_activation_hook( __FILE__, array( pluginwp(), 'activation' ) );
-register_deactivation_hook( __FILE__, array( pluginwp(), 'deactivation' ) );
+register_activation_hook( __FILE__, array( lastfm_profile_blocks(), 'activation' ) );
+register_deactivation_hook( __FILE__, array( lastfm_profile_blocks(), 'deactivation' ) );
 
-add_action( 'plugins_loaded', array( pluginwp(), 'load_text_domain' ) );
+add_action( 'plugins_loaded', array( lastfm_profile_blocks(), 'load_text_domain' ) );

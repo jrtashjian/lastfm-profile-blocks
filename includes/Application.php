@@ -2,13 +2,13 @@
 /**
  * The Application class.
  *
- * @package PluginWP
+ * @package LastFMProfileBlocks
  */
 
-namespace PluginWP;
+namespace LastFMProfileBlocks;
 
-use PluginWP\Dependencies\League\Container\Container;
-use PluginWP\Dependencies\League\Container\DefinitionContainerInterface;
+use LastFMProfileBlocks\Dependencies\League\Container\Container;
+use LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface;
 
 /**
  * The Application class.
@@ -57,11 +57,11 @@ class Application extends Container {
 	/**
 	 * Set the shared instance of the container.
 	 *
-	 * @param  \PluginWP\Dependencies\League\Container\DefinitionContainerInterface|null $container The Dependency Injection Container.
+	 * @param  \LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface|null $container The Dependency Injection Container.
 	 *
-	 * @return \PluginWP\Dependencies\League\Container\DefinitionContainerInterface|static
+	 * @return \LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface|static
 	 */
-	public static function set_instance( DefinitionContainerInterface $container = null ) {
+	public static function set_instance( ?DefinitionContainerInterface $container = null ) {
 		static::$instance = $container;
 		return static::$instance;
 	}
@@ -111,7 +111,7 @@ class Application extends Container {
 	 * Callback for plugin activation.
 	 */
 	public function activation() {
-		do_action( 'pluginwp_activate' );
+		do_action( 'lastfm_profile_blocks_activate' );
 	}
 
 
@@ -119,13 +119,13 @@ class Application extends Container {
 	 * Callback for plugin deactivation.
 	 */
 	public function deactivation() {
-		do_action( 'pluginwp_deactivate' );
+		do_action( 'lastfm_profile_blocks_deactivate' );
 	}
 
 	/**
 	 * Load language files.
 	 */
 	public function load_text_domain() {
-		load_plugin_textdomain( 'pluginwp', false, $this->base_path( 'languages' ) );
+		load_plugin_textdomain( 'lastfm_profile_blocks', false, $this->base_path( 'languages' ) );
 	}
 }

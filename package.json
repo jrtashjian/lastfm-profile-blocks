@@ -1,5 +1,5 @@
 {
-	"name": "pluginwp",
+	"name": "lastfm-profile-blocks",
 	"version": "0.0.1",
 	"license": "GPL-2.0-or-later",
 	"private": true,
@@ -28,7 +28,6 @@
 		"postversion": "git push && git push --tags"
 	},
 	"dependencies": {
-		"@pluginwp/plugin": "file:packages/plugin",
 		"@wordpress/base-styles": "^5.19.1",
 		"@wordpress/block-editor": "^14.14.5",
 		"@wordpress/blocks": "^14.8.1",

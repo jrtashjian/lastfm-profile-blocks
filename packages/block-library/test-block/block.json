@@ -1,9 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "pluginwp/test-block",
-	"title": "PluginWP Test",
-	"textdomain": "pluginwp",
+	"name": "lastfm-profile-blocks/test-block",
+	"title": "LastFMProfileBlocks Test",
+	"textdomain": "lastfm-profile-blocks",
 	"editorScript": "file:index.js",
 	"editorStyle": "file:index.css",
 	"style": "file:style-index.css"

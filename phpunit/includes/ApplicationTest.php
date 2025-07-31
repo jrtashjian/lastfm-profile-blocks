@@ -2,12 +2,12 @@
 /**
  * Tests the Application class.
  *
- * @package PluginWP
+ * @package LastFMProfileBlocks
  */
 
-namespace PluginWP\Tests\Application;
+namespace LastFMProfileBlocks\Tests\Application;
 
-use PluginWP\Application;
+use LastFMProfileBlocks\Application;
 
 /**
  * Tests the Application class.
@@ -83,7 +83,7 @@ class ApplicationTest extends \WP_UnitTestCase {
 	public function test_activation_hook_is_called() {
 		$plugin_basename = plugin_basename( $this->plugin_file );
 
-		register_activation_hook( $plugin_basename, array( pluginwp(), 'activation' ) );
+		register_activation_hook( $plugin_basename, array( lastfm_profile_blocks(), 'activation' ) );
 		$this->assertTrue( has_filter( 'activate_' . $plugin_basename ) );
 
 		do_action( 'activate_' . $plugin_basename ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
@@ -95,7 +95,7 @@ class ApplicationTest extends \WP_UnitTestCase {
 	public function test_deactivation_hook_is_called() {
 		$plugin_basename = plugin_basename( $this->plugin_file );
 
-		register_deactivation_hook( $plugin_basename, array( pluginwp(), 'deactivation' ) );
+		register_deactivation_hook( $plugin_basename, array( lastfm_profile_blocks(), 'deactivation' ) );
 		$this->assertTrue( has_filter( 'deactivate_' . $plugin_basename ) );
 
 		do_action( 'deactivate_' . $plugin_basename ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals

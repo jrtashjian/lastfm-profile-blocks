@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="PluginWP">
-	<description>Rules for PluginWP prefixed vendor files</description>
+<ruleset name="LastFMProfileBlocks">
+	<description>Rules for LastFMProfileBlocks prefixed vendor files</description>
 
 	<arg name="extensions" value="php" />
 	<arg name="basepath" value="./" />
