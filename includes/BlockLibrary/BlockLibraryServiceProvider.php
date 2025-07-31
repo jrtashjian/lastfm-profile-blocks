@@ -7,6 +7,10 @@
 
 namespace LastFMProfileBlocks\BlockLibrary;
 
+use LastFMProfileBlocks\BlockLibrary\Blocks\Friends;
+use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
+use LastFMProfileBlocks\BlockLibrary\Blocks\TopCharts;
+use LastFMProfileBlocks\BlockLibrary\Blocks\WeeklyCharts;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
@@ -47,6 +51,23 @@ class BlockLibraryServiceProvider extends AbstractServiceProvider implements Boo
 	 * Register the blocks.
 	 */
 	public function register_blocks() {
-		register_block_type( $this->getContainer()->base_path( '/build/block-library/test-block' ) );
+		$blocks = array(
+			Friends::class,
+			RecentTracks::class,
+			TopCharts::class,
+			WeeklyCharts::class,
+		);
+
+		foreach ( $blocks as $block ) {
+			/** @var Blocks\BaseBlock */ // phpcs:ignore
+			$block_object = new $block();
+
+			register_block_type(
+				$block_object->block_type_metadata(),
+				array(
+					'render_callback' => array( $block_object, 'render_block' ),
+				)
+			);
+		}
 	}
 }
