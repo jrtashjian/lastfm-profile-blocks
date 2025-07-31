@@ -42,7 +42,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="lastfm-profile-blocks"/>
+				<element value="lastfm_profile_blocks"/>
+				<element value="LastFMProfileBlocks"/>
 			</property>
 		</properties>
 	</rule>

@@ -22,8 +22,7 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 	 * @return array
 	 */
 	public function provides( string $id ): bool {
-		$services = array(
-		);
+		$services = array();
 
 		return in_array( $id, $services, true );
 	}
