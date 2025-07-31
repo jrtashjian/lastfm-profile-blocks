@@ -1,0 +1,65 @@
+{
+    "name": "pluginwp/pluginwp",
+	"type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Plugin Author",
+            "homepage": "https://pluginwp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PluginWP\\": "includes"
+        },
+        "classmap": [
+            "vendor_prefixed/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PluginWP\\Tests\\": "phpunit/includes"
+        }
+    },
+    "require": {
+        "league/container": "^4.2"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "johnpbloch/wordpress-core": "^6.1",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "wp-cli/wp-cli-bundle": "^2.6",
+        "wp-coding-standards/wpcs": "^3.0",
+        "wp-phpunit/wp-phpunit": "^6.1",
+        "yoast/phpunit-polyfills": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": "phpcs --standard=phpcs.xml.dist",
+        "lint-prefixed": "phpcs --standard=phpcs-prefixed.xml.dist",
+        "format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+        "test": "phpunit",
+        "makepot": "wp i18n make-pot . --exclude=\"node_modules,vendor\" --headers='{\"Last-Translator\":\"info@pluginwp.com\",\"Language-Team\":\"info@pluginwp.com\",\"Report-Msgid-Bugs-To\":\"https://pluginwp.com/contact\"}'",
+        "build-release": [
+            "rm -r ./vendor",
+            "@composer dump-autoload",
+            "wp dist-archive ./",
+            "@composer install"
+        ],
+        "phpscoper": [
+            "rm -rf ./vendor ./vendor_prefixed",
+            "@composer install --no-autoloader --no-dev --prefer-dist",
+            "php-scoper add-prefix --force",
+            "rm -rf ./vendor",
+            "@composer dump-autoload --optimize"
+        ]
+    }
+}

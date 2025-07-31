@@ -1,0 +1,14 @@
+.cache/
+.DS_Store
+.idea/
+.vscode/
+.wp-env.override.json
+
+npm-debug.log
+node_modules/
+/vendor/
+/vendor_prefixed/
+/build/
+
+phpunit/coverage/
+.phpunit.result.cache

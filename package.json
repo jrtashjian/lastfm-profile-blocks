@@ -1,0 +1,50 @@
+{
+	"name": "pluginwp",
+	"version": "0.0.1",
+	"license": "GPL-2.0-or-later",
+	"private": true,
+	"scripts": {
+		"build:analyze-bundles": "npm run build -- --webpack-bundle-analyzer",
+		"build": "wp-scripts build --webpack-src-dir=packages",
+		"start": "wp-scripts start --webpack-src-dir=packages",
+		"format:php": "wp-env run --env-cwd=\"wp-content/plugins/${PWD##*/}\" cli composer run-script format",
+		"lint:css:fix": "npm run lint:css -- --fix",
+		"lint:css": "wp-scripts lint-style \"**/*.scss\" -f verbose",
+		"lint:js:fix": "npm run lint:js -- --fix",
+		"lint:js": "wp-scripts lint-js",
+		"prelint:php": "wp-env run --env-cwd=\"wp-content/plugins/${PWD##*/}\" cli composer update --no-interaction",
+		"lint:php": "wp-env run --env-cwd=\"wp-content/plugins/${PWD##*/}\" cli composer run-script lint",
+		"lint:php:prefixed": "wp-env run --env-cwd=\"wp-content/plugins/${PWD##*/}\" cli composer run-script lint-prefixed",
+		"mailhog": "docker run --name mailhog -d -p 1025:1025 -p 8025:8025 mailhog/mailhog",
+		"packages-update": "wp-scripts packages-update --dist-tag=wp-6.8",
+		"postpackages-update": "npm run build",
+		"test:php": "npm-run-all lint:php lint:php:prefixed test:unit:php",
+		"test:unit:php:base": "wp-env run --env-cwd=\"wp-content/plugins/${PWD##*/}\" tests-wordpress vendor/bin/phpunit -c phpunit.xml.dist --verbose",
+		"test:unit:php:coverage": "npm run test:unit:php:base -- --coverage-html phpunit/coverage",
+		"test:unit:php:setup": "wp-env start --xdebug=develop,coverage",
+		"test:unit:php": "npm-run-all test:unit:php:setup test:unit:php:base",
+		"wp-env": "wp-env",
+		"version": "node bin/update-version.js && git add -A",
+		"postversion": "git push && git push --tags"
+	},
+	"dependencies": {
+		"@pluginwp/plugin": "file:packages/plugin",
+		"@wordpress/base-styles": "^5.19.1",
+		"@wordpress/block-editor": "^14.14.5",
+		"@wordpress/blocks": "^14.8.1",
+		"@wordpress/components": "^29.5.3",
+		"@wordpress/data": "^10.19.1",
+		"@wordpress/dom-ready": "^4.19.1",
+		"@wordpress/element": "^6.19.1",
+		"@wordpress/i18n": "^5.19.1",
+		"@wordpress/interface": "^9.4.3",
+		"@wordpress/plugins": "^7.19.3"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.19.1",
+		"@wordpress/eslint-plugin": "^22.5.1",
+		"@wordpress/scripts": "^30.12.1",
+		"@wordpress/stylelint-config": "^23.11.1",
+		"npm-run-all": "^4.1.5"
+	}
+}

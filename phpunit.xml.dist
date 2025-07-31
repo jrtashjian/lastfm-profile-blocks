@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<phpunit
+	bootstrap="phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	convertDeprecationsToExceptions="true"
+	>
+	<testsuites>
+		<testsuite name="default">
+			<directory suffix="Test.php">./phpunit/</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>./</directory>
+			<exclude>
+				<directory suffix=".php">build</directory>
+				<directory suffix=".php">node_modules</directory>
+				<directory suffix=".php">phpunit</directory>
+				<directory suffix=".php">vendor</directory>
+				<directory suffix=".php">vendor_prefixed</directory>
+				<file>scoper.inc.php</file>
+			</exclude>
+		</whitelist>
+	</filter>
+</phpunit>

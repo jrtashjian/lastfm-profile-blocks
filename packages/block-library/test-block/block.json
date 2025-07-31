@@ -1,0 +1,10 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "pluginwp/test-block",
+	"title": "PluginWP Test",
+	"textdomain": "pluginwp",
+	"editorScript": "file:index.js",
+	"editorStyle": "file:index.css",
+	"style": "file:style-index.css"
+}
