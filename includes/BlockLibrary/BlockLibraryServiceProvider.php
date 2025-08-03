@@ -11,6 +11,7 @@ use LastFMProfileBlocks\BlockLibrary\Blocks\Friends;
 use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
 use LastFMProfileBlocks\BlockLibrary\Blocks\TopCharts;
 use LastFMProfileBlocks\BlockLibrary\Blocks\WeeklyCharts;
+use LastFMProfileBlocks\BlockLibrary\Blocks\DynamicTemplate;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
@@ -56,6 +57,7 @@ class BlockLibraryServiceProvider extends AbstractServiceProvider implements Boo
 			RecentTracks::class,
 			TopCharts::class,
 			WeeklyCharts::class,
+			DynamicTemplate::class,
 		);
 
 		foreach ( $blocks as $block ) {

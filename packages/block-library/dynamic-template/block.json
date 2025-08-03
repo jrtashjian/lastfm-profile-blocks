@@ -1,0 +1,20 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/block.json",
+    "apiVersion": 2,
+    "name": "lastfm-profile-blocks/dynamic-template",
+    "title": "Dynamic Template",
+    "textdomain": "lastfm-profile-blocks",
+	"supports": {
+		"html": false
+	},
+    "allowedBlocks": [
+        "core/group",
+        "lastfm-profile-blocks/album-name",
+        "lastfm-profile-blocks/album-image",
+        "lastfm-profile-blocks/artist-name"
+    ],
+    "usesContext": [
+        "collection"
+    ],
+    "editorScript": "file:index.js"
+}
