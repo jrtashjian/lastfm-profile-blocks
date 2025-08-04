@@ -4,10 +4,51 @@
     "name": "lastfm-profile-blocks/dynamic-template",
     "title": "Dynamic Template",
     "textdomain": "lastfm-profile-blocks",
-	"supports": {
-		"html": false,
-        "inserter": false
-	},
+    "supports": {
+        "html": false,
+        "inserter": false,
+        "color": {
+            "gradients": true,
+            "link": true,
+            "__experimentalDefaultControls": {
+                "background": true,
+                "text": true
+            }
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true,
+            "__experimentalFontFamily": true,
+            "__experimentalFontWeight": true,
+            "__experimentalFontStyle": true,
+            "__experimentalTextTransform": true,
+            "__experimentalTextDecoration": true,
+            "__experimentalLetterSpacing": true,
+            "__experimentalDefaultControls": {
+                "fontSize": true
+            }
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true,
+            "blockGap": true,
+            "__experimentalDefaultControls": {
+                "blockGap": true,
+                "padding": false,
+                "margin": false
+            }
+        },
+        "layout": {
+            "allowSizingOnChildren": true,
+            "allowSwitching": true
+        },
+        "__experimentalBorder": {
+            "radius": true,
+            "color": true,
+            "width": true,
+            "style": true
+        }
+    },
     "usesContext": [
         "collection"
     ],
