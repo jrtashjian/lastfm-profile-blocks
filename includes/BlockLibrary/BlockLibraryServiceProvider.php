@@ -8,10 +8,8 @@
 namespace LastFMProfileBlocks\BlockLibrary;
 
 use LastFMProfileBlocks\BlockLibrary\Blocks\Friends;
-use LastFMProfileBlocks\BlockLibrary\Blocks\AlbumName;
-use LastFMProfileBlocks\BlockLibrary\Blocks\ArtistName;
-use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
 use LastFMProfileBlocks\BlockLibrary\Blocks\TopCharts;
+use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
 use LastFMProfileBlocks\BlockLibrary\Blocks\WeeklyCharts;
 use LastFMProfileBlocks\BlockLibrary\Blocks\DynamicTemplate;
 use LastFMProfileBlocks\BlockLibrary\Blocks\ItemImage;
@@ -61,8 +59,6 @@ class BlockLibraryServiceProvider extends AbstractServiceProvider implements Boo
 			RecentTracks::class,
 			TopCharts::class,
 			WeeklyCharts::class,
-			AlbumName::class,
-			ArtistName::class,
 			DynamicTemplate::class,
 			ItemName::class,
 			ItemImage::class,
