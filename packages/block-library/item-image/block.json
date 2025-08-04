@@ -1,0 +1,40 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/block.json",
+    "apiVersion": 3,
+    "name": "lastfm-profile-blocks/item-image",
+    "title": "Item Image",
+    "textdomain": "lastfm-profile-blocks",
+    "ancestor": [
+        "lastfm-profile-blocks/dynamic-template"
+    ],
+    "attributes": {
+        "itemImageProp": {
+            "type": "string"
+        },
+        "itemLinkProp": {
+            "type": "string"
+        }
+    },
+	"supports": {
+		"filter": {
+			"duotone": true
+		},
+		"spacing": {
+			"margin": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true
+		},
+		"shadow": {
+            "color": true,
+            "offset": true,
+            "blur": true
+		}
+	},
+    "usesContext": [
+        "item"
+    ],
+    "editorScript": "file:index.js"
+}
