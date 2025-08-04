@@ -7,7 +7,7 @@ const Edit = ( {
 	attributes: { itemTextProp, itemLinkProp },
 	context: { item },
 } ) => {
-	const getByPath = ( object, path ) => {
+	const getByPath = ( object, path = '' ) => {
 		return path
 			.split( '.' )
 			.reduce( ( current, key ) => ( current ? current[ key ] : undefined ), object );
