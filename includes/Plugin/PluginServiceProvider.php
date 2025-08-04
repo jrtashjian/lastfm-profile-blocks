@@ -41,5 +41,40 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 	 * @return void
 	 */
 	public function boot(): void {
+		add_action( 'init', array( $this, 'register_settings' ) );
+	}
+
+	/**
+	 * Register the plugin settings.
+	 */
+	public function register_settings() {
+		// If the current user can't edit_theme_options, bail.
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return;
+		}
+
+		register_setting(
+			'lastfm_profile_blocks',
+			'lastfm_profile_blocks_api_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'The api key for authenticating with Last.FM.', 'lastfm-profile-blocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
+
+		register_setting(
+			'lastfm_profile_blocks',
+			'lastfm_profile_blocks_profile',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'The default Last.FM profile to use.', 'lastfm-profile-blocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
 	}
 }
