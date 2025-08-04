@@ -5,14 +5,9 @@
     "title": "Dynamic Template",
     "textdomain": "lastfm-profile-blocks",
 	"supports": {
-		"html": false
+		"html": false,
+        "inserter": false
 	},
-    "allowedBlocks": [
-        "core/group",
-        "lastfm-profile-blocks/album-name",
-        "lastfm-profile-blocks/album-image",
-        "lastfm-profile-blocks/artist-name"
-    ],
     "usesContext": [
         "collection"
     ],
