@@ -20,7 +20,7 @@ class WeeklyCharts extends BaseBlock {
 		return sprintf(
 			'<div %s>%s</div>',
 			get_block_wrapper_attributes(),
-			self::class
+			$this->content
 		);
 	}
 }

@@ -2,13 +2,13 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import json from './block.json';
-import Edit from './edit';
-import save from './save';
+import { default as edit } from './edit';
 
 import './style.scss';
 import './index.scss';
@@ -16,6 +16,6 @@ import './index.scss';
 const { name } = json;
 
 registerBlockType( name, {
-	edit: Edit,
-	save,
+	edit,
+	save: ( { ref } ) => ref ? null : <InnerBlocks.Content />,
 } );
