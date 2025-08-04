@@ -19,7 +19,7 @@ const Edit = ( {
 	const blockProps = useBlockProps();
 	return (
 		<figure { ...blockProps }>
-			<img src={ itemImage.large } alt="" />
+			<img src={ itemImage.medium } alt="" />
 		</figure>
 	);
 };
