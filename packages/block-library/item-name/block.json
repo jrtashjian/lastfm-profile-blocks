@@ -1,11 +1,17 @@
 {
     "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/block.json",
-    "apiVersion": 2,
+    "apiVersion": 3,
     "name": "lastfm-profile-blocks/item-name",
     "title": "Item Name",
     "textdomain": "lastfm-profile-blocks",
+    "ancestor": [
+        "lastfm-profile-blocks/dynamic-template"
+    ],
     "attributes": {
-        "itemProperty": {
+        "itemTextProp": {
+            "type": "string"
+        },
+        "itemLinkProp": {
             "type": "string"
         }
     },
