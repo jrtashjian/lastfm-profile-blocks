@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/block.json",
+    "apiVersion": 2,
+    "name": "lastfm-profile-blocks/item-name",
+    "title": "Item Name",
+    "textdomain": "lastfm-profile-blocks",
+    "attributes": {
+        "itemProperty": {
+            "type": "string"
+        }
+    },
+    "usesContext": [
+        "item"
+    ],
+    "editorScript": "file:index.js"
+}

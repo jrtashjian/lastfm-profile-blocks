@@ -14,6 +14,7 @@ use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
 use LastFMProfileBlocks\BlockLibrary\Blocks\TopCharts;
 use LastFMProfileBlocks\BlockLibrary\Blocks\WeeklyCharts;
 use LastFMProfileBlocks\BlockLibrary\Blocks\DynamicTemplate;
+use LastFMProfileBlocks\BlockLibrary\Blocks\ItemName;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
 use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
@@ -62,6 +63,7 @@ class BlockLibraryServiceProvider extends AbstractServiceProvider implements Boo
 			AlbumName::class,
 			ArtistName::class,
 			DynamicTemplate::class,
+			ItemName::class,
 		);
 
 		foreach ( $blocks as $block ) {
