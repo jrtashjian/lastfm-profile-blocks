@@ -1,5 +1,7 @@
 # LastFM Profile Blocks
 
+⚠️ **Notice**: This project is under active development and not ready for use. Proceed with caution.
+
 ## Requirements
 
 - PHP 7.4+
