@@ -26,10 +26,29 @@ class ItemImage extends BaseBlock {
 		$item_image = $this->getByPath( $item, $this->get_block_attribute( 'itemImageProp' ) );
 		$item_link  = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
 
+		$width = empty( $this->get_block_attribute( 'width' ) )
+			? '' :
+			intval( $this->get_block_attribute( 'width' ) );
+
+		$image = sprintf(
+			'<img src="%s" width="%s" alt="" />',
+			esc_attr( $item_image['medium'] ?? '' ),
+			esc_attr( $width )
+		);
+
+		if ( $this->get_block_attribute( 'isLink' ) && $item_link ) {
+			$image = sprintf(
+				'<a href="%s" target="%s">%s</a>',
+				esc_url( $item_link ),
+				esc_attr( $this->get_block_attribute( 'linkTarget' ) ),
+				$image
+			);
+		}
+
 		return sprintf(
-			'<figure %s><img src="%s" alt="" /></figure>',
+			'<div %s>%s</div>',
 			get_block_wrapper_attributes(),
-			$item_image['medium'] ?? ''
+			$image
 		);
 	}
 }

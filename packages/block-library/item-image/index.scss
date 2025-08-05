@@ -1,1 +1,11 @@
-.wp-block-lastfm-profile-blocks-item-image {}
+.wp-block-lastfm-profile-blocks-item-image {
+	a {
+		pointer-events: none;
+	}
+
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+}

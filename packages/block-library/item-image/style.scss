@@ -1,12 +1,19 @@
 .wp-block-lastfm-profile-blocks-item-image {
-    margin: 0;
-    overflow: hidden;
-    max-width: 100%;;
+    box-sizing: border-box;
+    line-height: 0;
+
+    a {
+        display: inline-block;
+        line-height: 0;
+    }
 
     img {
         height: auto;
-        width: 100%;
-        vertical-align: bottom;
-        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    a,
+    img {
+        border-radius: inherit;
     }
 }

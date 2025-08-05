@@ -13,30 +13,45 @@
         },
         "itemLinkProp": {
             "type": "string"
+        },
+        "width": {
+            "type": "number"
+        },
+        "isLink": {
+            "type": "boolean",
+            "default": false
+        },
+        "linkTarget": {
+            "type": "string",
+            "default": "_blank"
         }
     },
-	"supports": {
-		"filter": {
-			"duotone": true
-		},
-		"spacing": {
-			"margin": true
-		},
-		"__experimentalBorder": {
-			"color": true,
-			"radius": true,
-			"width": true
-		},
-		"shadow": {
-            "color": true,
-            "offset": true,
-            "blur": true
-		}
-	},
+    "supports": {
+        "color": {
+            "text": false,
+            "background": false
+        },
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        },
+        "filter": {
+            "duotone": true
+        }
+    },
+    "selectors": {
+        "filter": {
+            "duotone": ".wp-block-lastfm-profile-blocks-item-image img"
+        }
+    },
     "usesContext": [
         "item"
     ],
     "editorScript": "file:index.js",
-	"editorStyle": "file:index.css",
-	"style": "file:style-index.css"
+    "editorStyle": "file:index.css",
+    "style": "file:style-index.css"
 }
