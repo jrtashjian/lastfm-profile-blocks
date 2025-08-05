@@ -2,13 +2,13 @@
 /**
  * The PluginServiceProvider class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\Plugin;
+namespace ProfileBlocksLastFM\Plugin;
 
-use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
-use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
+use ProfileBlocksLastFM\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use ProfileBlocksLastFM\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
 /**
  * The PluginServiceProvider class.
@@ -54,11 +54,11 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 		}
 
 		register_setting(
-			'lastfm_profile_blocks',
-			'lastfm_profile_blocks_api_key',
+			'profile_blocks_lastfm',
+			'profile_blocks_lastfm_api_key',
 			array(
 				'type'              => 'string',
-				'description'       => __( 'The api key for authenticating with Last.FM.', 'lastfm-profile-blocks' ),
+				'description'       => __( 'The api key for authenticating with Last.FM.', 'profile-blocks-lastfm' ),
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',
@@ -66,11 +66,11 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 		);
 
 		register_setting(
-			'lastfm_profile_blocks',
-			'lastfm_profile_blocks_profile',
+			'profile_blocks_lastfm',
+			'profile_blocks_lastfm_profile',
 			array(
 				'type'              => 'string',
-				'description'       => __( 'The default Last.FM profile to use.', 'lastfm-profile-blocks' ),
+				'description'       => __( 'The default Last.FM profile to use.', 'profile-blocks-lastfm' ),
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',

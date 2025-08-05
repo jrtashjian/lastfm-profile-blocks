@@ -1,9 +1,9 @@
 {
     "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/block.json",
     "apiVersion": 2,
-    "name": "lastfm-profile-blocks/dynamic-template",
+    "name": "profile-blocks-lastfm/dynamic-template",
     "title": "Dynamic Template",
-    "textdomain": "lastfm-profile-blocks",
+    "textdomain": "profile-blocks-lastfm",
     "supports": {
         "html": false,
         "inserter": false,

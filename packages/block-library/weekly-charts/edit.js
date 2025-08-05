@@ -20,10 +20,10 @@ import {
 import { useEffect, useMemo, useState } from '@wordpress/element';
 
 const TEMPLATE = [
-	[ 'lastfm-profile-blocks/dynamic-template', {}, [
-		[ 'lastfm-profile-blocks/item-image', { itemImageProp: 'album.images', itemLinkProp: 'album.url' } ],
-		[ 'lastfm-profile-blocks/item-name', { itemTextProp: 'album.name', itemLinkProp: 'album.url' } ],
-		[ 'lastfm-profile-blocks/item-name', { itemTextProp: 'artist.name', itemLinkProp: 'artist.url' } ],
+	[ 'profile-blocks-lastfm/dynamic-template', {}, [
+		[ 'profile-blocks-lastfm/item-image', { itemImageProp: 'album.images', itemLinkProp: 'album.url' } ],
+		[ 'profile-blocks-lastfm/item-name', { itemTextProp: 'album.name', itemLinkProp: 'album.url' } ],
+		[ 'profile-blocks-lastfm/item-name', { itemTextProp: 'artist.name', itemLinkProp: 'artist.url' } ],
 	] ],
 ];
 
@@ -32,8 +32,8 @@ const Edit = ( {
 	// setAttributes,
 	// clientId,
 } ) => {
-	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'lastfm_profile_blocks_api_key' );
-	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'lastfm_profile_blocks_profile' );
+	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
+	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_profile' );
 
 	// const { saveEditedEntityRecord } = useDispatch( coreDataStore );
 
@@ -95,22 +95,22 @@ const Edit = ( {
 		</BlockContextProvider>
 
 	// 	{ /* <Placeholder
-	// 		label={ __( 'Weekly Charts', 'lastfm-profile-blocks' ) }
+	// 		label={ __( 'Weekly Charts', 'profile-blocks-lastfm' ) }
 	// 		icon={ <BlockIcon showColors /> }
-	// 		instructions={ __( 'This block displays the weekly charts from Last.fm.', 'lastfm-profile-blocks' ) }
+	// 		instructions={ __( 'This block displays the weekly charts from Last.fm.', 'profile-blocks-lastfm' ) }
 	// 	>
 	// 		<form onSubmit={ onSubmit }>
 	// 			<TextControl
 	// 				__next40pxDefaultSize
 	// 				value={ apiKey || '' }
 	// 				className="wp-block-embed__placeholder-input"
-	// 				label={ __( 'Last.fm API Key', 'lastfm-profile-blocks' ) }
+	// 				label={ __( 'Last.fm API Key', 'profile-blocks-lastfm' ) }
 	// 				hideLabelFromVision
-	// 				placeholder={ __( 'Enter your Last.fm API key', 'lastfm-profile-blocks' ) }
+	// 				placeholder={ __( 'Enter your Last.fm API key', 'profile-blocks-lastfm' ) }
 	// 				onChange={ onChange }
 	// 			/>
 	// 			<Button __next40pxDefaultSize variant="primary" type="submit">
-	// 				{ __( 'Save API Key', 'lastfm-profile-blocks' ) }
+	// 				{ __( 'Save API Key', 'profile-blocks-lastfm' ) }
 	// 			</Button>
 	// 		</form>
 

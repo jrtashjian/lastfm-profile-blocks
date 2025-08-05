@@ -8,7 +8,7 @@ const Save = () => {
 	const blockProps = useBlockProps.save();
 	return (
 		<div { ...blockProps }>
-			{ __( 'Hello, World! (from the frontend)', 'lastfm-profile-blocks' ) }
+			{ __( 'Hello, World! (from the frontend)', 'profile-blocks-lastfm' ) }
 		</div>
 	);
 };

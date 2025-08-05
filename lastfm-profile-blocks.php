@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name: LastFMProfileBlocks
+ * Plugin Name: Profile Blocks for LastFM
  * Plugin URI: https://jrtashjian.com
- * Description: LastFMProfileBlocks Plugin Description.
+ * Description: ProfileBlocksLastFM Plugin Description.
  * Version: 0.0.1
  * Requires at least: 6.8
  * Requires PHP: 7.4
  * Author: JR Tashjian
  * Author URI: https://jrtashjian.com
- * Text Domain: lastfm-profile-blocks
+ * Text Domain: profile-blocks-lastfm
  * Domain Path: /languages
  *
- * Copyright 2019-2023 JR Tashjian
+ * Copyright 2019-2025 JR Tashjian
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,13 +26,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
 defined( 'ABSPATH' ) || exit;
 
 // Guard the plugin from initializing more than once.
-if ( class_exists( \LastFMProfileBlocks\Application::class ) ) {
+if ( class_exists( \ProfileBlocksLastFM\Application::class ) ) {
 	return;
 }
 
@@ -43,19 +43,19 @@ require_once __DIR__ . '/vendor/autoload.php';
  *
  * @return Application The application container.
  */
-function lastfm_profile_blocks() {
-	return \LastFMProfileBlocks\Application::get_instance();
+function profile_blocks_lastfm() {
+	return \ProfileBlocksLastFM\Application::get_instance();
 }
 
-lastfm_profile_blocks()->set_base_path( __FILE__ );
+profile_blocks_lastfm()->set_base_path( __FILE__ );
 
 /**
  * Service Providers.
  */
-lastfm_profile_blocks()->addServiceProvider( new \LastFMProfileBlocks\Plugin\PluginServiceProvider() );
-lastfm_profile_blocks()->addServiceProvider( new \LastFMProfileBlocks\BlockLibrary\BlockLibraryServiceProvider() );
+profile_blocks_lastfm()->addServiceProvider( new \ProfileBlocksLastFM\Plugin\PluginServiceProvider() );
+profile_blocks_lastfm()->addServiceProvider( new \ProfileBlocksLastFM\BlockLibrary\BlockLibraryServiceProvider() );
 
-register_activation_hook( __FILE__, array( lastfm_profile_blocks(), 'activation' ) );
-register_deactivation_hook( __FILE__, array( lastfm_profile_blocks(), 'deactivation' ) );
+register_activation_hook( __FILE__, array( profile_blocks_lastfm(), 'activation' ) );
+register_deactivation_hook( __FILE__, array( profile_blocks_lastfm(), 'deactivation' ) );
 
-add_action( 'plugins_loaded', array( lastfm_profile_blocks(), 'load_text_domain' ) );
+add_action( 'plugins_loaded', array( profile_blocks_lastfm(), 'load_text_domain' ) );

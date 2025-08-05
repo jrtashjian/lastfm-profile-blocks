@@ -1,5 +1,5 @@
 {
-    "name": "jrtashjian/lastfm-profile-blocks",
+    "name": "jrtashjian/profile-blocks-lastfm",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "LastFMProfileBlocks\\": "includes"
+            "ProfileBlocksLastFM\\": "includes"
         },
         "classmap": [
             "vendor_prefixed/"
@@ -18,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LastFMProfileBlocks\\Tests\\": "phpunit/includes"
+            "ProfileBlocksLastFM\\Tests\\": "phpunit/includes"
         }
     },
     "require": {

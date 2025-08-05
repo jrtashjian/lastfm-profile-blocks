@@ -2,10 +2,10 @@
 /**
  * The LovedTracks block class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary\Blocks;
+namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
 
 /**
  * The LovedTracks block class.

@@ -2,10 +2,10 @@
 /**
  * The WeeklyCharts block class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary\Blocks;
+namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
 
 use WP_Block;
 
@@ -19,8 +19,8 @@ class WeeklyCharts extends BaseBlock {
 	 * @return string Returns the block content.
 	 */
 	public function render() {
-		$api_key = get_option( 'lastfm_profile_blocks_api_key' );
-		$profile = get_option( 'lastfm_profile_blocks_profile' );
+		$api_key = get_option( 'profile_blocks_lastfm_api_key' );
+		$profile = get_option( 'profile_blocks_lastfm_profile' );
 
 		$request_url = sprintf(
 			'https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=%s&api_key=%s&format=json&limit=6&period=7day',

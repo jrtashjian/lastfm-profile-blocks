@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="LastFMProfileBlocks">
-	<description>Rules for LastFMProfileBlocks</description>
+<ruleset name="ProfileBlocksLastFM">
+	<description>Rules for ProfileBlocksLastFM</description>
 
 	<arg name="extensions" value="php" />
 	<arg name="basepath" value="./" />
@@ -34,7 +34,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="lastfm-profile-blocks"/>
+				<element value="profile-blocks-lastfm"/>
 			</property>
 		</properties>
 	</rule>
@@ -42,8 +42,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="lastfm_profile_blocks"/>
-				<element value="LastFMProfileBlocks"/>
+				<element value="profile_blocks_lastfm"/>
+				<element value="ProfileBlocksLastFM"/>
 			</property>
 		</properties>
 	</rule>

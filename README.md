@@ -1,4 +1,4 @@
-# LastFM Profile Blocks
+# Profile Blocks for LastFM
 
 ⚠️ **Notice**: This project is under active development and not ready for use. Proceed with caution.
 
@@ -17,13 +17,13 @@ In the search field type “LastFM Profile Blocks,” then click “Search Plugi
 
 **Manual installation**
 
-Manual installation method requires [downloading the LastFM Profile Blocks plugin](https://wordpress.org/plugins/lastfm-profile-blocks) and uploading it to your web server via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation).
+Manual installation method requires [downloading the LastFM Profile Blocks plugin](https://wordpress.org/plugins/profile-blocks-lastfm) and uploading it to your web server via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation).
 
 ## Development
 
 Clone this repository:
 ```
-git clone https://github.com/jrtashjian/lastfm-profile-blocks.git
+git clone https://github.com/jrtashjian/profile-blocks-lastfm.git
 ```
 
 Install [PHP-Scoper](https://github.com/humbug/php-scoper) globally and run it to prefix required dependencies:

@@ -8,7 +8,7 @@ const { camelCaseDash } = require( '@wordpress/dependency-extraction-webpack-plu
  * Internal dependencies.
  */
 const { dependencies } = require( './package' );
-const PLUGIN_NAMESPACE = '@lastfm-profile-blocks/';
+const PLUGIN_NAMESPACE = '@profile-blocks-lastfm/';
 
 const pluginPackages = Object.keys( dependencies )
 	.filter( ( packageName ) => packageName.startsWith( PLUGIN_NAMESPACE ) )
@@ -24,7 +24,7 @@ module.exports = {
 				[ `${ packageName }/index` ]: {
 					import: `./packages/${ packageName }`,
 					library: {
-						name: [ 'lastfm-profile-blocks', camelCaseDash( packageName ) ],
+						name: [ 'profile-blocks-lastfm', camelCaseDash( packageName ) ],
 						type: 'window',
 					},
 				},

@@ -2,10 +2,10 @@
 /**
  * The BlockInterface class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary\Blocks;
+namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
 
 /**
  * Describes the interface of a form block that exposes methods to render it's content.

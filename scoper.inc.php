@@ -3,7 +3,7 @@
  * PHP-Scoper is a tool which essentially moves any body of code, including all
  * dependencies such as vendor directories, to a new and distinct namespace.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
 use Isolated\Symfony\Component\Finder\Finder;
@@ -20,7 +20,7 @@ return array(
 	// will be generated instead.
 	//
 	// For more see: https://github.com/humbug/php-scoper/blob/master/docs/configuration.md#prefix.
-	'prefix'     => 'LastFMProfileBlocks\Dependencies',
+	'prefix'     => 'ProfileBlocksLastFM\Dependencies',
 
 	// The base output directory for the prefixed files.
 	// This will be overridden by the 'output-dir' command line option if present.

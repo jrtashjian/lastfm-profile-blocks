@@ -2,10 +2,10 @@
 /**
  * The BaseBlock block class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary\Blocks;
+namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
 
 /**
  * The BaseBlock block class.
@@ -39,7 +39,7 @@ abstract class BaseBlock implements BlockInterface {
 	 * @return string path to the JSON file with metadata definition for the block.
 	 */
 	public function block_type_metadata() {
-		return lastfm_profile_blocks()->base_path( '/build/block-library/' . $this->block_type_name() );
+		return profile_blocks_lastfm()->base_path( '/build/block-library/' . $this->block_type_name() );
 	}
 
 	/**

@@ -2,13 +2,13 @@
 /**
  * The Application class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks;
+namespace ProfileBlocksLastFM;
 
-use LastFMProfileBlocks\Dependencies\League\Container\Container;
-use LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface;
+use ProfileBlocksLastFM\Dependencies\League\Container\Container;
+use ProfileBlocksLastFM\Dependencies\League\Container\DefinitionContainerInterface;
 
 /**
  * The Application class.
@@ -57,9 +57,9 @@ class Application extends Container {
 	/**
 	 * Set the shared instance of the container.
 	 *
-	 * @param  \LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface|null $container The Dependency Injection Container.
+	 * @param  \ProfileBlocksLastFM\Dependencies\League\Container\DefinitionContainerInterface|null $container The Dependency Injection Container.
 	 *
-	 * @return \LastFMProfileBlocks\Dependencies\League\Container\DefinitionContainerInterface|static
+	 * @return \ProfileBlocksLastFM\Dependencies\League\Container\DefinitionContainerInterface|static
 	 */
 	public static function set_instance( ?DefinitionContainerInterface $container = null ) {
 		static::$instance = $container;
@@ -111,7 +111,7 @@ class Application extends Container {
 	 * Callback for plugin activation.
 	 */
 	public function activation() {
-		do_action( 'lastfm_profile_blocks_activate' );
+		do_action( 'profile_blocks_lastfm_activate' );
 	}
 
 
@@ -119,13 +119,13 @@ class Application extends Container {
 	 * Callback for plugin deactivation.
 	 */
 	public function deactivation() {
-		do_action( 'lastfm_profile_blocks_deactivate' );
+		do_action( 'profile_blocks_lastfm_deactivate' );
 	}
 
 	/**
 	 * Load language files.
 	 */
 	public function load_text_domain() {
-		load_plugin_textdomain( 'lastfm_profile_blocks', false, $this->base_path( 'languages' ) );
+		load_plugin_textdomain( 'profile_blocks_lastfm', false, $this->base_path( 'languages' ) );
 	}
 }

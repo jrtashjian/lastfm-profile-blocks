@@ -1,18 +1,18 @@
 # Copyright (C) 2022 JR Tashjian
-# This file is distributed under the same license as the LastFMProfileBlocks plugin.
+# This file is distributed under the same license as the ProfileBlocksLastFM plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: LastFMProfileBlocks 1.0.0\n"
-"Report-Msgid-Bugs-To: https://lastfm-profile-blocks.com/contact\n"
-"Last-Translator: info@lastfm-profile-blocks.com\n"
-"Language-Team: info@lastfm-profile-blocks.com\n"
+"Project-Id-Version: ProfileBlocksLastFM 1.0.0\n"
+"Report-Msgid-Bugs-To: https://profile-blocks-lastfm.com/contact\n"
+"Last-Translator: info@profile-blocks-lastfm.com\n"
+"Language-Team: info@profile-blocks-lastfm.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-08-30T23:12:38-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
-"X-Domain: lastfm-profile-blocks\n"
+"X-Domain: profile-blocks-lastfm\n"
 
 #. Plugin Name of the plugin
 #. translators: accessibility text for the footer landmark region.
@@ -20,16 +20,16 @@ msgstr ""
 #: includes/Plugin/PluginServiceProvider.php:28
 #: build/plugin.js:15
 #: packages/plugin/components/app/index.js:27
-msgid "LastFMProfileBlocks"
+msgid "ProfileBlocksLastFM"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-msgid "https://lastfm-profile-blocks.com"
+msgid "https://profile-blocks-lastfm.com"
 msgstr ""
 
 #. Description of the plugin
-msgid "LastFMProfileBlocks Plugin Description."
+msgid "ProfileBlocksLastFM Plugin Description."
 msgstr ""
 
 #. Author of the plugin

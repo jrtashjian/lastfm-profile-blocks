@@ -60,22 +60,22 @@ const Edit = ( {
 	return (
 		<div { ...blockProps }>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'lastfm-profile-blocks' ) }>
+				<PanelBody title={ __( 'Settings', 'profile-blocks-lastfm' ) }>
 					<RangeControl
 						__next40pxDefaultSize
-						label={ __( 'Image Width', 'lastfm-profile-blocks' ) }
+						label={ __( 'Image Width', 'profile-blocks-lastfm' ) }
 						onChange={ ( value ) => setAttributes( { width: value } ) }
 						min={ minWidth }
 						max={ 1000 }
 						value={ currentWidth }
 					/>
 					<ToggleControl
-						label={ __( 'Link to item', 'lastfm-profile-blocks' ) }
+						label={ __( 'Link to item', 'profile-blocks-lastfm' ) }
 						checked={ isLink }
 						onChange={ () => setAttributes( { isLink: ! isLink } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Open in new tab', 'lastfm-profile-blocks' ) }
+						label={ __( 'Open in new tab', 'profile-blocks-lastfm' ) }
 						checked={ linkTarget === '_blank' }
 						onChange={ ( value ) => setAttributes( { linkTarget: value ? '_blank' : '_self' } ) }
 					/>

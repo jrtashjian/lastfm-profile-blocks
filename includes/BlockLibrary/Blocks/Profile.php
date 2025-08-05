@@ -2,10 +2,10 @@
 /**
  * The Profile block class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary\Blocks;
+namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
 
 /**
  * The Profile block class.

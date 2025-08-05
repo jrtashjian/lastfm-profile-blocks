@@ -6,15 +6,15 @@ import { __ } from '@wordpress/i18n';
 const variations = [
 	{
 		name: 'album-image',
-		title: __( 'Album Image', 'lastfm-profile-blocks' ),
-		description: __( 'Display the name of the album.', 'lastfm-profile-blocks' ),
+		title: __( 'Album Image', 'profile-blocks-lastfm' ),
+		description: __( 'Display the name of the album.', 'profile-blocks-lastfm' ),
 		attributes: { itemImageProp: 'album.images', itemLinkProp: 'album.url' },
 		isDefault: true,
 	},
 	{
 		name: 'artist-image',
-		title: __( 'Artist Image', 'lastfm-profile-blocks' ),
-		description: __( 'Display the image of the artist.', 'lastfm-profile-blocks' ),
+		title: __( 'Artist Image', 'profile-blocks-lastfm' ),
+		description: __( 'Display the image of the artist.', 'profile-blocks-lastfm' ),
 		attributes: { itemImageProp: 'artist.images', itemLinkProp: 'artist.url' },
 	},
 ];

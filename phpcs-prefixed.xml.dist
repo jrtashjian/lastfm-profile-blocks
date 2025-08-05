@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="LastFMProfileBlocks">
-	<description>Rules for LastFMProfileBlocks prefixed vendor files</description>
+<ruleset name="ProfileBlocksLastFM">
+	<description>Rules for ProfileBlocksLastFM prefixed vendor files</description>
 
 	<arg name="extensions" value="php" />
 	<arg name="basepath" value="./" />

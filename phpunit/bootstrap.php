@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  *
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals
  */

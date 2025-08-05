@@ -2,20 +2,20 @@
 /**
  * The BlockLibraryServiceProvider class.
  *
- * @package LastFMProfileBlocks
+ * @package ProfileBlocksLastFM
  */
 
-namespace LastFMProfileBlocks\BlockLibrary;
+namespace ProfileBlocksLastFM\BlockLibrary;
 
-use LastFMProfileBlocks\BlockLibrary\Blocks\Friends;
-use LastFMProfileBlocks\BlockLibrary\Blocks\TopCharts;
-use LastFMProfileBlocks\BlockLibrary\Blocks\RecentTracks;
-use LastFMProfileBlocks\BlockLibrary\Blocks\WeeklyCharts;
-use LastFMProfileBlocks\BlockLibrary\Blocks\DynamicTemplate;
-use LastFMProfileBlocks\BlockLibrary\Blocks\ItemImage;
-use LastFMProfileBlocks\BlockLibrary\Blocks\ItemName;
-use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
-use LastFMProfileBlocks\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\Friends;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\TopCharts;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\RecentTracks;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\WeeklyCharts;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\DynamicTemplate;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\ItemImage;
+use ProfileBlocksLastFM\BlockLibrary\Blocks\ItemName;
+use ProfileBlocksLastFM\Dependencies\League\Container\ServiceProvider\AbstractServiceProvider;
+use ProfileBlocksLastFM\Dependencies\League\Container\ServiceProvider\BootableServiceProviderInterface;
 
 /**
  * The BlockLibraryServiceProvider class.
