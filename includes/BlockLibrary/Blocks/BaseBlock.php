@@ -102,15 +102,24 @@ abstract class BaseBlock implements BlockInterface {
 	 */
 	abstract protected function render();
 
-	public function getByPath( $array, $path = '' ) {
-		$keys    = explode( '.', $path );
-		$current = $array;
+	/**
+	 * Retrieves a value from a nested array using a dot-notated path.
+	 *
+	 * @param array  $items    The array to search within.
+	 * @param string $path     The dot-notated path to the desired value (e.g., 'foo.bar.baz').
+	 * @param mixed  $fallback The value to return if the path does not exist or is not set.
+	 *
+	 * @return mixed           The value found at the specified path, or $fallback if not found.
+	 */
+	public function getByPath( array $items, $path = '', mixed $fallback = null ) {
+		$keys    = explode( '.', (string) $path );
+		$current = $items;
 
 		foreach ( $keys as $key ) {
-			if ( is_array( $current ) && isset( $current[ $key ] ) ) {
+			if ( is_array( $current ) && array_key_exists( $key, $current ) ) {
 				$current = $current[ $key ];
 			} else {
-				return '';
+				return $fallback;
 			}
 		}
 
