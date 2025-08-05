@@ -17,10 +17,16 @@ class ItemName extends BaseBlock {
 	 * @return string Returns the block content.
 	 */
 	public function render() {
+		$item = $this->get_block_context( 'item' );
+
+		$item_text = $this->getByPath( $item, $this->get_block_attribute( 'itemTextProp' ) );
+		$item_link = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
+
 		return sprintf(
-			'<div %s>%s</div>',
+			'<div %s><a href="%s">%s</a></div>',
 			get_block_wrapper_attributes(),
-			self::class
+			$item_link,
+			$item_text
 		);
 	}
 }

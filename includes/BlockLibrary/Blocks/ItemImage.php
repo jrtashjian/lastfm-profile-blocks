@@ -17,10 +17,15 @@ class ItemImage extends BaseBlock {
 	 * @return string Returns the block content.
 	 */
 	public function render() {
+		$item = $this->get_block_context( 'item' );
+
+		$item_image = $this->getByPath( $item, $this->get_block_attribute( 'itemImageProp' ) );
+		$item_link  = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
+
 		return sprintf(
-			'<div %s>%s</div>',
+			'<figure %s><img src="%s" alt="" /></figure>',
 			get_block_wrapper_attributes(),
-			self::class
+			$item_image['medium'] ?? ''
 		);
 	}
 }
