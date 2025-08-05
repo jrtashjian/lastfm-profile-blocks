@@ -87,7 +87,7 @@ abstract class BaseBlock implements BlockInterface {
 	 *
 	 * @param string $key The block context key.
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 	public function get_block_context( $key ) {
 		return property_exists( $this->instance, 'context' ) && array_key_exists( $key, $this->instance->context )
@@ -101,4 +101,19 @@ abstract class BaseBlock implements BlockInterface {
 	 * @return string
 	 */
 	abstract protected function render();
+
+	public function getByPath( $array, $path = '' ) {
+		$keys    = explode( '.', $path );
+		$current = $array;
+
+		foreach ( $keys as $key ) {
+			if ( is_array( $current ) && isset( $current[ $key ] ) ) {
+				$current = $current[ $key ];
+			} else {
+				return '';
+			}
+		}
+
+		return $current;
+	}
 }
