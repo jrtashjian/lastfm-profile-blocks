@@ -19,6 +19,10 @@ class ItemImage extends BaseBlock {
 	public function render() {
 		$item = $this->get_block_context( 'item' );
 
+		if ( ! $item ) {
+			return '';
+		}
+
 		$item_image = $this->getByPath( $item, $this->get_block_attribute( 'itemImageProp' ) );
 		$item_link  = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
 

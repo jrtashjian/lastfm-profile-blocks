@@ -19,6 +19,10 @@ class ItemName extends BaseBlock {
 	public function render() {
 		$item = $this->get_block_context( 'item' );
 
+		if ( ! $item ) {
+			return '';
+		}
+
 		$item_text = $this->getByPath( $item, $this->get_block_attribute( 'itemTextProp' ) );
 		$item_link = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
 
