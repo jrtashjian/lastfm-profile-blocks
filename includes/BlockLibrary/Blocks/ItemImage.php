@@ -49,7 +49,11 @@ class ItemImage extends BaseBlock {
 
 		return sprintf(
 			'<div %s>%s</div>',
-			get_block_wrapper_attributes(),
+			get_block_wrapper_attributes(
+				array(
+					'class' => str_replace( '.', '-', $this->get_block_attribute( 'itemImageProp' ) ),
+				)
+			),
 			$image
 		);
 	}

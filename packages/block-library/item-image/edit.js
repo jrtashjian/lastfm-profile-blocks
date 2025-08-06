@@ -49,10 +49,10 @@ const Edit = ( {
 		/>
 	);
 
-	let imgWrapper = img;
+	let imageDisplay = img;
 
 	if ( isLink && itemLink ) {
-		imgWrapper = (
+		imageDisplay = (
 			<a href={ itemLink }
 				target="_blank"
 				rel="noopener noreferrer"
@@ -118,7 +118,7 @@ const Edit = ( {
 					} );
 				} }
 			>
-				{ imgWrapper }
+				{ imageDisplay }
 			</ResizableBox>
 		</div>
 	);
