@@ -17,6 +17,12 @@ const variations = [
 		description: __( 'Display the name of the artist.', 'profile-blocks-lastfm' ),
 		attributes: { itemTextProp: 'artist.name', itemLinkProp: 'artist.url' },
 	},
+	{
+		name: 'album-playcount',
+		title: __( 'Album Playcount', 'profile-blocks-lastfm' ),
+		description: __( 'Display the playcount of the album.', 'profile-blocks-lastfm' ),
+		attributes: { itemTextProp: 'album.playcount' },
+	},
 ];
 
 variations.forEach( ( variation ) => {
