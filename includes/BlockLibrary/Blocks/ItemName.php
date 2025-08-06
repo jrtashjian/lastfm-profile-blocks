@@ -29,8 +29,8 @@ class ItemName extends BaseBlock {
 		return sprintf(
 			'<div %s><a href="%s">%s</a></div>',
 			get_block_wrapper_attributes(),
-			$item_link,
-			$item_text
+			esc_url( $item_link ),
+			esc_html( $item_text )
 		);
 	}
 }
