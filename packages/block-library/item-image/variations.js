@@ -23,10 +23,6 @@ variations.forEach( ( variation ) => {
 	variation.isActive = ( blockAttributes, variationAttributes ) =>
 		blockAttributes.itemImageProp ===
 		variationAttributes.itemImageProp;
-
-	if ( ! variation.scope ) {
-		variation.scope = [ 'inserter', 'block', 'transform' ];
-	}
 } );
 
 export default variations;
