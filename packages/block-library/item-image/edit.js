@@ -6,13 +6,21 @@ import {
 	PanelBody,
 	RangeControl,
 	ResizableBox,
+	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+const imageSizeLabels = {
+	small: __( 'Small', 'profile-blocks-lastfm' ),
+	medium: __( 'Medium', 'profile-blocks-lastfm' ),
+	large: __( 'Large', 'profile-blocks-lastfm' ),
+	extralarge: __( 'Extra Large', 'profile-blocks-lastfm' ),
+};
+
 const Edit = ( {
-	attributes: { itemImageProp, itemLinkProp, width, isLink, linkTarget },
+	attributes: { itemImageProp, itemLinkProp, itemImageSize, width, isLink, linkTarget },
 	setAttributes,
 	isSelected,
 	context: { item },
@@ -26,12 +34,14 @@ const Edit = ( {
 	const itemImage = getByPath( item, itemImageProp ) || {};
 	const itemLink = getByPath( item, itemLinkProp ) || '';
 
+	const imageSizes = Object.keys( itemImage );
+
 	const minWidth = 20;
 	const [ defaultSize, setDefaultSize ] = useState( minWidth );
 
 	const img = (
 		<img
-			src={ itemImage.medium }
+			src={ itemImage[ itemImageSize ] }
 			alt=""
 			onLoad={ ( event ) => {
 				setDefaultSize( event.target.naturalWidth );
@@ -61,6 +71,15 @@ const Edit = ( {
 		<div { ...blockProps }>
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings', 'profile-blocks-lastfm' ) }>
+					<SelectControl
+						label={ __( 'Image Size', 'profile-blocks-lastfm' ) }
+						value={ itemImageSize }
+						options={ imageSizes.map( ( size ) => ( {
+							label: imageSizeLabels[ size ] || size,
+							value: size,
+						} ) ) }
+						onChange={ ( value ) => setAttributes( { itemImageSize: value } ) }
+					/>
 					<RangeControl
 						__next40pxDefaultSize
 						label={ __( 'Image Width', 'profile-blocks-lastfm' ) }
