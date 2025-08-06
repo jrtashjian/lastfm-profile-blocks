@@ -26,11 +26,25 @@ class ItemName extends BaseBlock {
 		$item_text = $this->getByPath( $item, $this->get_block_attribute( 'itemTextProp' ) );
 		$item_link = $this->getByPath( $item, $this->get_block_attribute( 'itemLinkProp' ) );
 
+		$output = esc_html( $item_text );
+
+		if ( $this->get_block_attribute( 'isLink' ) && $item_link ) {
+			$output = sprintf(
+				'<a href="%s" target="%s">%s</a>',
+				esc_url( $item_link ),
+				esc_attr( $this->get_block_attribute( 'linkTarget' ) ),
+				$output
+			);
+		}
+
 		return sprintf(
-			'<div %s><a href="%s">%s</a></div>',
-			get_block_wrapper_attributes(),
-			esc_url( $item_link ),
-			esc_html( $item_text )
+			'<div %s>%s</div>',
+			get_block_wrapper_attributes(
+				array(
+					'class' => str_replace( '.', '-', $this->get_block_attribute( 'itemTextProp' ) ),
+				)
+			),
+			$output
 		);
 	}
 }

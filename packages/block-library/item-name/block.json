@@ -13,6 +13,14 @@
         },
         "itemLinkProp": {
             "type": "string"
+        },
+        "isLink": {
+            "type": "boolean",
+            "default": false
+        },
+        "linkTarget": {
+            "type": "string",
+            "default": "_blank"
         }
     },
     "usesContext": [
