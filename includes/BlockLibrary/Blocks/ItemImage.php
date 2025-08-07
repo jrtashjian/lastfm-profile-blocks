@@ -11,6 +11,8 @@ namespace ProfileBlocksLastFM\BlockLibrary\Blocks;
  * The ItemImage block class.
  */
 class ItemImage extends BaseBlock {
+	const FALLBACK_IMAGE = 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png';
+
 	/**
 	 * Renders the block on the server.
 	 *
@@ -34,7 +36,7 @@ class ItemImage extends BaseBlock {
 
 		$image = sprintf(
 			'<img src="%s" width="%s" alt="" />',
-			esc_attr( $item_image[ $item_image_size ] ?? '' ),
+			esc_attr( $item_image[ $item_image_size ] ?? self::FALLBACK_IMAGE ),
 			esc_attr( $width )
 		);
 

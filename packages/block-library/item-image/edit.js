@@ -19,6 +19,8 @@ const imageSizeLabels = {
 	extralarge: __( 'Extra Large', 'profile-blocks-lastfm' ),
 };
 
+const fallbackImage = 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png';
+
 const Edit = ( {
 	attributes: { itemImageProp, itemLinkProp, itemImageSize, width, isLink, linkTarget },
 	setAttributes,
@@ -34,14 +36,12 @@ const Edit = ( {
 	const itemImage = getByPath( item, itemImageProp ) || {};
 	const itemLink = getByPath( item, itemLinkProp ) || '';
 
-	const imageSizes = Object.keys( itemImage );
-
 	const minWidth = 20;
 	const [ defaultSize, setDefaultSize ] = useState( minWidth );
 
 	const img = (
 		<img
-			src={ itemImage[ itemImageSize ] }
+			src={ itemImage[ itemImageSize ] ?? fallbackImage }
 			alt=""
 			onLoad={ ( event ) => {
 				setDefaultSize( event.target.naturalWidth );
@@ -74,7 +74,7 @@ const Edit = ( {
 					<SelectControl
 						label={ __( 'Image Size', 'profile-blocks-lastfm' ) }
 						value={ itemImageSize }
-						options={ imageSizes.map( ( size ) => ( {
+						options={ Object.keys( imageSizeLabels ).map( ( size ) => ( {
 							label: imageSizeLabels[ size ] || size,
 							value: size,
 						} ) ) }
