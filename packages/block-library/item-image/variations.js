@@ -17,6 +17,12 @@ const variations = [
 		description: __( 'Display the image of the artist.', 'profile-blocks-lastfm' ),
 		attributes: { itemImageProp: 'artist.images', itemLinkProp: 'artist.url' },
 	},
+	{
+		name: 'track-image',
+		title: __( 'Track Image', 'profile-blocks-lastfm' ),
+		description: __( 'Display the image of the track.', 'profile-blocks-lastfm' ),
+		attributes: { itemImageProp: 'track.images', itemLinkProp: 'track.url' },
+	},
 ];
 
 variations.forEach( ( variation ) => {
