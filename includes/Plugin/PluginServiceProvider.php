@@ -42,6 +42,7 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 	 */
 	public function boot(): void {
 		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'rest_api_init', array( $this, 'register_rest_api' ) );
 	}
 
 	/**
@@ -76,5 +77,80 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 				'default'           => '',
 			)
 		);
+	}
+
+	/**
+	 * Register the custom REST API endpoint.
+	 */
+	public function register_rest_api() {
+		register_rest_route(
+			'profile-blocks-lastfm/v1',
+			'/top-charts',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'handle_top_charts_request' ),
+				'permission_callback' => function () {
+					return current_user_can( 'read' );
+				},
+				'args'                => array(
+					'chart'  => array(
+						'required'          => true,
+						'validate_callback' => function ( $param ) {
+							return in_array( $param, array( 'albums', 'artists', 'tracks' ), true );
+						},
+					),
+					'user'   => array(
+						'required'          => true,
+						'validate_callback' => function ( $param ) {
+							return is_string( $param );
+						},
+					),
+					'period' => array(
+						'required'          => false,
+						'default'           => '7day',
+						'validate_callback' => function ( $param ) {
+							return in_array( $param, array( '7day', '1month', '3month', '6month', '12month', 'overall' ), true );
+						},
+					),
+					'limit'  => array(
+						'required'          => false,
+						'default'           => 6,
+						'validate_callback' => function ( $param ) {
+							return is_numeric( $param ) && $param > 0;
+						},
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Handle the top charts request.
+	 *
+	 * @param WP_REST_Request $request The REST request.
+	 *
+	 * @return WP_REST_Response|WP_Error The REST response or error.
+	 */
+	public function handle_top_charts_request( $request ) {
+		$chart  = $request->get_param( 'chart' );
+		$user   = $request->get_param( 'user' );
+		$period = $request->get_param( 'period' );
+		$limit  = $request->get_param( 'limit' );
+
+		$method = match ( $chart ) {
+			'albums'   => 'get_top_albums',
+			'artists'  => 'get_top_artists',
+			'tracks'   => 'get_top_tracks',
+		};
+
+		$collection = LastFM::$method(
+			array(
+				'user'   => $user,
+				'period' => $period,
+				'limit'  => intval( $limit ),
+			)
+		);
+
+		return rest_ensure_response( $collection );
 	}
 }
