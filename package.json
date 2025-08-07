@@ -39,7 +39,8 @@
 		"@wordpress/i18n": "^5.19.1",
 		"@wordpress/icons": "^10.19.1",
 		"@wordpress/interface": "^9.4.4",
-		"@wordpress/plugins": "^7.19.4"
+		"@wordpress/plugins": "^7.19.4",
+		"@wordpress/url": "^4.19.2"
 	},
 	"devDependencies": {
 		"@wordpress/env": "^10.19.1",
