@@ -59,7 +59,7 @@ const Edit = ( {
 	const innerBlockProps = useInnerBlocksProps( blockProps, { __experimentalCaptureToolbars: true } );
 
 	return collection && collection.map( ( item, key ) => (
-		<BlockContextProvider key={ key } value={ { ...item } }>
+		<BlockContextProvider key={ key } value={ { item } }>
 			{ key === activeBlockContextId ? (
 				<div { ...innerBlockProps } />
 			) : null }
