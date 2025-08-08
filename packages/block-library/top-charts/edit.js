@@ -57,17 +57,15 @@ const TEMPLATE = {
 };
 
 const Edit = ( {
-	attributes: { chart },
-	// setAttributes,
-	// clientId,
+	attributes: { collection },
 } ) => {
 	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
 	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_profile' );
 
-	const [ collection, setCollection ] = useState( [] );
+	const [ items, setItems ] = useState( [] );
 
 	useEffect( () => {
-		if ( ! apiKey || ! defaultProfile ) {
+		if ( ! apiKey ) {
 			return;
 		}
 
@@ -77,26 +75,25 @@ const Edit = ( {
 					path: addQueryArgs(
 						'/profile-blocks-lastfm/v1/top-charts',
 						{
-							chart,
-							user: defaultProfile,
+							collection,
 							limit: 6,
 							period: '7day',
 						}
 					),
 				} );
 
-				setCollection( data || [] );
+				setItems( data || [] );
 			} catch ( error ) {}
 		};
 
 		fetchItems();
-	}, [ apiKey, defaultProfile ] );
+	}, [ apiKey, collection ] );
 
 	const blockProps = useBlockProps();
-	const innerBlockProps = useInnerBlocksProps( blockProps, { template: TEMPLATE[ chart ] } );
+	const innerBlockProps = useInnerBlocksProps( blockProps, { template: TEMPLATE[ collection ] } );
 
 	return (
-		<BlockContextProvider value={ { collection } }>
+		<BlockContextProvider value={ { collection: items } }>
 			<div { ...innerBlockProps } />
 		</BlockContextProvider>
 	);

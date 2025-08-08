@@ -9,7 +9,7 @@
 			"type": "string",
 			"default": ""
 		},
-		"chart": {
+		"collection": {
 			"type": "string",
 			"default": "albums",
 			"enum": [

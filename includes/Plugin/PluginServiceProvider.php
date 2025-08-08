@@ -93,27 +93,24 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 					return current_user_can( 'read' );
 				},
 				'args'                => array(
-					'chart'  => array(
+					'collection' => array(
 						'required'          => true,
 						'validate_callback' => function ( $param ) {
 							return in_array( $param, array( 'albums', 'artists', 'tracks' ), true );
 						},
 					),
-					'user'   => array(
-						'required'          => true,
+					'user'       => array(
 						'validate_callback' => function ( $param ) {
 							return is_string( $param );
 						},
 					),
-					'period' => array(
-						'required'          => false,
+					'period'     => array(
 						'default'           => '7day',
 						'validate_callback' => function ( $param ) {
 							return in_array( $param, array( '7day', '1month', '3month', '6month', '12month', 'overall' ), true );
 						},
 					),
-					'limit'  => array(
-						'required'          => false,
+					'limit'      => array(
 						'default'           => 6,
 						'validate_callback' => function ( $param ) {
 							return is_numeric( $param ) && $param > 0;
@@ -132,18 +129,18 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 	 * @return WP_REST_Response|WP_Error The REST response or error.
 	 */
 	public function handle_top_charts_request( $request ) {
-		$chart  = $request->get_param( 'chart' );
-		$user   = $request->get_param( 'user' );
-		$period = $request->get_param( 'period' );
-		$limit  = $request->get_param( 'limit' );
+		$collection = $request->get_param( 'collection' );
+		$user       = $request->get_param( 'user' );
+		$period     = $request->get_param( 'period' );
+		$limit      = $request->get_param( 'limit' );
 
-		$method = match ( $chart ) {
+		$method = match ( $collection ) {
 			'albums'   => 'get_top_albums',
 			'artists'  => 'get_top_artists',
 			'tracks'   => 'get_top_tracks',
 		};
 
-		$collection = LastFM::$method(
+		$data = LastFM::$method(
 			array(
 				'user'   => $user,
 				'period' => $period,
@@ -151,6 +148,6 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 			)
 		);
 
-		return rest_ensure_response( $collection );
+		return rest_ensure_response( $data );
 	}
 }

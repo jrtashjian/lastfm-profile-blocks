@@ -20,7 +20,7 @@ class TopCharts extends BaseBlock {
 	 * @return string Returns the block content.
 	 */
 	public function render() {
-		$method = match ( $this->get_block_attribute( 'chart' ) ) {
+		$method = match ( $this->get_block_attribute( 'collection' ) ) {
 			'albums'  => 'get_top_albums',
 			'artists' => 'get_top_artists',
 			'tracks'  => 'get_top_tracks',
