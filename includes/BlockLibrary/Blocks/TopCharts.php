@@ -30,7 +30,7 @@ class TopCharts extends BaseBlock {
 			array(
 				'user'   => $this->get_block_attribute( 'user' ),
 				'period' => $this->get_block_attribute( 'period' ) ?? '7day',
-				'limit'  => $this->get_block_attribute( 'limit' ) ?? 6,
+				'limit'  => $this->get_block_attribute( 'itemsToShow' ) ?? 6,
 			)
 		);
 

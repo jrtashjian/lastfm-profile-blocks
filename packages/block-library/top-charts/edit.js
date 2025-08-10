@@ -7,6 +7,7 @@ import {
 	BlockContextProvider,
 	useInnerBlocksProps,
 	BlockControls,
+	InspectorControls,
 } from '@wordpress/block-editor';
 import { useEntityProp } from '@wordpress/core-data';
 import { useEffect, useState } from '@wordpress/element';
@@ -20,11 +21,15 @@ import {
 	__experimentalInputControl as InputControl,
 	ToolbarGroup,
 	ToolbarButton,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+	RangeControl,
 } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
 const Edit = ( {
-	attributes: { collection },
+	attributes: { collection, itemsToShow },
+	setAttributes,
 } ) => {
 	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
 	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_profile' );
@@ -45,7 +50,7 @@ const Edit = ( {
 						'/profile-blocks-lastfm/v1/top-charts',
 						{
 							collection,
-							limit: 6,
+							limit: itemsToShow,
 							period: '7day',
 						}
 					),
@@ -56,7 +61,7 @@ const Edit = ( {
 		};
 
 		fetchItems();
-	}, [ apiKey, collection ] );
+	}, [ apiKey, collection, itemsToShow ] );
 
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps );
@@ -119,6 +124,32 @@ const Edit = ( {
 					/>
 				</ToolbarGroup>
 			</BlockControls>
+			<InspectorControls>
+				<ToolsPanel
+					label={ __( 'Settings', 'profile-blocks-lastfm' ) }
+					resetAll={ () => {
+						setAttributes( { itemsToShow: 6 } );
+					} }
+				>
+					<ToolsPanelItem
+						label={ __( 'Number of Items', 'profile-blocks-lastfm' ) }
+						hasValue={ () => itemsToShow !== 6 }
+						onDeselect={ () => setAttributes( { itemsToShow: 6 } ) }
+						isShownByDefault
+					>
+						<RangeControl
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							label={ __( 'Items to Show', 'profile-blocks-lastfm' ) }
+							value={ itemsToShow }
+							onChange={ ( value ) => setAttributes( { itemsToShow: value } ) }
+							min={ 1 }
+							max={ 20 }
+							required
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
+			</InspectorControls>
 			<BlockContextProvider value={ { collection: items } }>
 				<div { ...innerBlockProps } />
 			</BlockContextProvider>
