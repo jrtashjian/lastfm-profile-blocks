@@ -6,6 +6,7 @@ import {
 	useBlockProps,
 	BlockContextProvider,
 	useInnerBlocksProps,
+	BlockControls,
 } from '@wordpress/block-editor';
 import { useEntityProp } from '@wordpress/core-data';
 import { useEffect, useState } from '@wordpress/element';
@@ -17,7 +18,10 @@ import {
 	Placeholder,
 	__experimentalHStack as HStack,
 	__experimentalInputControl as InputControl,
+	ToolbarGroup,
+	ToolbarButton,
 } from '@wordpress/components';
+import { edit } from '@wordpress/icons';
 
 const Edit = ( {
 	attributes: { collection },
@@ -105,9 +109,20 @@ const Edit = ( {
 	}
 
 	return (
-		<BlockContextProvider value={ { collection: items } }>
-			<div { ...innerBlockProps } />
-		</BlockContextProvider>
+		<>
+			<BlockControls>
+				<ToolbarGroup>
+					<ToolbarButton
+						label={ __( 'Change Settings', 'profile-blocks-lastfm' ) }
+						icon={ edit }
+						onClick={ () => setShowSetup( true ) }
+					/>
+				</ToolbarGroup>
+			</BlockControls>
+			<BlockContextProvider value={ { collection: items } }>
+				<div { ...innerBlockProps } />
+			</BlockContextProvider>
+		</>
 	);
 };
 export default Edit;
