@@ -9,7 +9,6 @@ import {
 	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const imageSizeLabels = {
@@ -17,6 +16,13 @@ const imageSizeLabels = {
 	medium: __( 'Medium', 'profile-blocks-lastfm' ),
 	large: __( 'Large', 'profile-blocks-lastfm' ),
 	extralarge: __( 'Extra Large', 'profile-blocks-lastfm' ),
+};
+
+const imageSizeWidths = {
+	small: 34,
+	medium: 64,
+	large: 174,
+	extralarge: 300,
 };
 
 const fallbackImage = 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png';
@@ -37,15 +43,13 @@ const Edit = ( {
 	const itemLink = getByPath( item, itemLinkProp ) || '';
 
 	const minWidth = 20;
-	const [ defaultSize, setDefaultSize ] = useState( minWidth );
+	const currentWidth = width || 64;
 
 	const img = (
 		<img
-			src={ itemImage[ itemImageSize ] ?? fallbackImage }
+			src={ itemImage[ itemImageSize ] || fallbackImage }
 			alt=""
-			onLoad={ ( event ) => {
-				setDefaultSize( event.target.naturalWidth );
-			} }
+			style={ { width: currentWidth + 'px', height: 'auto' } }
 		/>
 	);
 
@@ -63,8 +67,6 @@ const Edit = ( {
 		);
 	}
 
-	const currentWidth = width || defaultSize;
-
 	const blockProps = useBlockProps();
 
 	return (
@@ -78,7 +80,7 @@ const Edit = ( {
 							label: imageSizeLabels[ size ] || size,
 							value: size,
 						} ) ) }
-						onChange={ ( value ) => setAttributes( { itemImageSize: value } ) }
+						onChange={ ( value ) => setAttributes( { itemImageSize: value, width: imageSizeWidths[ value ] } ) }
 					/>
 					<RangeControl
 						__next40pxDefaultSize
