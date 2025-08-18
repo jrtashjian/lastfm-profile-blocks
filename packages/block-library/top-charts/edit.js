@@ -34,12 +34,18 @@ const Edit = ( {
 	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
 	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_profile' );
 
-	const [ showSetup, setShowSetup ] = useState( !! apiKey );
+	const [ showSetup, setShowSetup ] = useState( false );
+
+	// Show setup form if API key is missing.
+	useEffect( () => {
+		setShowSetup( typeof apiKey === 'undefined' || ! apiKey );
+	}, [ apiKey ] );
 
 	const [ items, setItems ] = useState( [] );
 
+	// Fetch items from Last.fm when API key is set.
 	useEffect( () => {
-		if ( ! apiKey ) {
+		if ( ! apiKey || showSetup ) {
 			return;
 		}
 
@@ -61,7 +67,7 @@ const Edit = ( {
 		};
 
 		fetchItems();
-	}, [ apiKey, collection, itemsToShow ] );
+	}, [ apiKey, collection, itemsToShow, showSetup ] );
 
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps );
