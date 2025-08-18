@@ -34,6 +34,13 @@ class TopCharts extends BaseBlock {
 			)
 		);
 
+		if ( empty( $collection ) ) {
+			return sprintf(
+				'<div %s><p>No listening activity found for this time period.</p></div>',
+				get_block_wrapper_attributes()
+			);
+		}
+
 		$this->content = '';
 
 		foreach ( $this->instance->parsed_block['innerBlocks'] as $block ) {
