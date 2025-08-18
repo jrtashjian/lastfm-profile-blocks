@@ -22,6 +22,13 @@ class DynamicTemplate extends BaseBlock {
 		// Retrieve the 'collection' from block context, defaulting to an empty array if not set.
 		$collection = $this->get_block_context( 'collection' ) ?? array();
 
+		if ( empty( $collection ) ) {
+			return sprintf(
+				'<div %s><p>There are currently no items to display.</p></div>',
+				get_block_wrapper_attributes()
+			);
+		}
+
 		$rendered_blocks = array();
 
 		// If a collection exists, render a block for each item in the collection.
