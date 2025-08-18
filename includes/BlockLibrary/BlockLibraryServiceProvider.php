@@ -55,10 +55,7 @@ class BlockLibraryServiceProvider extends AbstractServiceProvider implements Boo
 	 */
 	public function register_blocks() {
 		$blocks = array(
-			Friends::class,
-			RecentTracks::class,
 			TopCharts::class,
-			WeeklyCharts::class,
 			DynamicTemplate::class,
 			ItemName::class,
 			ItemImage::class,
