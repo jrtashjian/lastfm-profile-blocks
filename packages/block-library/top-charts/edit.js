@@ -27,6 +27,26 @@ import {
 } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
+const PLACEHOLDER_RESPONSE = [
+	{
+		artist: {
+			url: 'https://www.last.fm/music/Fake+Artist',
+			name: 'Fake Artist',
+			playcount: '987',
+		},
+		album: {
+			name: 'Imaginary Album',
+			url: 'https://www.last.fm/music/Fake+Artist/Imaginary+Album',
+			playcount: '42',
+		},
+		track: {
+			name: 'Sample Track',
+			url: 'https://www.last.fm/music/Fake+Artist/_/Sample+Track',
+			playcount: '17',
+		},
+	},
+];
+
 const Edit = ( {
 	attributes: { collection, itemsToShow },
 	setAttributes,
@@ -51,7 +71,7 @@ const Edit = ( {
 
 		const fetchItems = async () => {
 			try {
-				const data = await apiFetch( {
+				let data = await apiFetch( {
 					path: addQueryArgs(
 						'/profile-blocks-lastfm/v1/top-charts',
 						{
@@ -62,7 +82,12 @@ const Edit = ( {
 					),
 				} );
 
-				setItems( data || [] );
+				// Show placeholder data if no items are returned.
+				if ( ! data || ( Array.isArray( data ) && ! data.length ) ) {
+					data = PLACEHOLDER_RESPONSE;
+				}
+
+				setItems( data );
 			} catch ( error ) {}
 		};
 
