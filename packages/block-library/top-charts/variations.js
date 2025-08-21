@@ -50,7 +50,7 @@ const variations = [
 		description: __( 'Display the top tracks of a user.', 'profile-blocks-lastfm' ),
 		attributes: { collection: 'tracks' },
 		innerBlocks: [
-			[ 'core/heading', { level: 3, content: __( 'Top Tracks here', 'profile-blocks-lastfm' ) } ],
+			[ 'core/heading', { level: 3, content: __( 'Top Tracks', 'profile-blocks-lastfm' ) } ],
 			[ 'profile-blocks-lastfm/dynamic-template', { layout: { type: 'flex' } }, [
 				[ 'profile-blocks-lastfm/item-image', { itemImageProp: 'track.images', itemLinkProp: 'track.url' } ],
 				[ 'core/group', { layout: { type: 'flex', flexWrap: 'nowrap', orientation: 'vertical' }, style: { layout: { selfStretch: 'fill' }, spacing: { blockGap: '0' } } }, [
