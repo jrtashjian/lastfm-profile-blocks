@@ -52,15 +52,15 @@ const Edit = ( {
 	attributes: { collection, itemsToShow, period },
 	setAttributes,
 } ) => {
-	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
+	const [ apiKey, setApiKey, apiKeyFull ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
 	const [ defaultProfile, setDefaultProfile ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_profile' );
 
 	const [ showSetup, setShowSetup ] = useState( false );
 
 	// Show setup form if API key is missing.
 	useEffect( () => {
-		setShowSetup( typeof apiKey === 'undefined' || ! apiKey );
-	}, [ apiKey ] );
+		setShowSetup( typeof apiKey === 'undefined' || ! apiKey || apiKey !== apiKeyFull );
+	}, [ apiKey, apiKeyFull ] );
 
 	const [ items, setItems ] = useState( [] );
 
