@@ -111,7 +111,7 @@ const Edit = ( {
 					icon={ null }
 					instructions={ __( 'Enter your Last.FM API key and default username. You can override the username for each block.', 'profile-blocks-lastfm' ) }
 				>
-					<form onSubmit={ onSubmit }>
+					<form onSubmit={ onSubmit } autoComplete="off">
 						<HStack align="end">
 							<InputControl
 								__next40pxDefaultSize
@@ -122,6 +122,7 @@ const Edit = ( {
 								onChange={ ( value ) => setApiKey( value ) }
 								type="password"
 								required
+								autoComplete="off"
 							/>
 							<InputControl
 								__next40pxDefaultSize
@@ -129,7 +130,7 @@ const Edit = ( {
 								label={ __( 'Username', 'profile-blocks-lastfm' ) }
 								placeholder={ __( 'Enter your Last.fm username', 'profile-blocks-lastfm' ) }
 								onChange={ ( value ) => setDefaultProfile( value ) }
-								required
+								autoComplete="off"
 							/>
 							<Button __next40pxDefaultSize variant="primary" type="submit">
 								{ __( 'Apply', 'profile-blocks-lastfm' ) }
