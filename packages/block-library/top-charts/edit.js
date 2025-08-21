@@ -79,6 +79,8 @@ const Edit = ( {
 							collection,
 							limit: itemsToShow,
 							period: period || '7day',
+							api_key: apiKey,
+							user: defaultProfile,
 						}
 					),
 				} );
@@ -95,7 +97,7 @@ const Edit = ( {
 		};
 
 		fetchItems();
-	}, [ apiKey, collection, itemsToShow, period, showSetup ] );
+	}, [ apiKey, collection, itemsToShow, period, defaultProfile, showSetup ] );
 
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps );

@@ -99,6 +99,11 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 							return in_array( $param, array( 'albums', 'artists', 'tracks' ), true );
 						},
 					),
+					'api_key'    => array(
+						'validate_callback' => function ( $param ) {
+							return is_string( $param ) && ! empty( $param );
+						},
+					),
 					'user'       => array(
 						'validate_callback' => function ( $param ) {
 							return is_string( $param );
@@ -130,6 +135,7 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 	 */
 	public function handle_top_charts_request( $request ) {
 		$collection = $request->get_param( 'collection' );
+		$api_key    = $request->get_param( 'api_key' );
 		$user       = $request->get_param( 'user' );
 		$period     = $request->get_param( 'period' );
 		$limit      = $request->get_param( 'limit' );
@@ -142,9 +148,10 @@ class PluginServiceProvider extends AbstractServiceProvider implements BootableS
 
 		$data = LastFM::$method(
 			array(
-				'user'   => $user,
-				'period' => $period,
-				'limit'  => intval( $limit ),
+				'api_key' => $api_key,
+				'user'    => $user,
+				'period'  => $period,
+				'limit'   => intval( $limit ),
 			)
 		);
 
