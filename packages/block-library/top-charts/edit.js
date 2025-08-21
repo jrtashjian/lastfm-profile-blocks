@@ -89,7 +89,9 @@ const Edit = ( {
 				}
 
 				setItems( data );
-			} catch ( error ) {}
+			} catch ( error ) {
+				setItems( PLACEHOLDER_RESPONSE );
+			}
 		};
 
 		fetchItems();
