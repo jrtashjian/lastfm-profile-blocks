@@ -20,9 +20,9 @@ class DynamicTemplate extends BaseBlock {
 	 */
 	public function render() {
 		// Retrieve the 'collection' from block context, defaulting to an empty array if not set.
-		$collection = $this->get_block_context( 'collection' ) ?? array();
+		$collection = $this->get_block_context( 'collection' );
 
-		if ( empty( $collection ) ) {
+		if ( is_array( $collection ) && empty( $collection ) ) {
 			return sprintf(
 				'<div %s><p>There are currently no items to display.</p></div>',
 				get_block_wrapper_attributes()
@@ -32,7 +32,7 @@ class DynamicTemplate extends BaseBlock {
 		$rendered_blocks = array();
 
 		// If a collection exists, render a block for each item in the collection.
-		foreach ( $collection as $item ) {
+		foreach ( (array) $collection as $item ) {
 			$block_instance = new WP_Block(
 				$this->instance->parsed_block,
 				array( 'item' => $item )
