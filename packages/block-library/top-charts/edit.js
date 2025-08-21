@@ -24,6 +24,7 @@ import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 	RangeControl,
+	SelectControl,
 } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
 
@@ -48,7 +49,7 @@ const PLACEHOLDER_RESPONSE = [
 ];
 
 const Edit = ( {
-	attributes: { collection, itemsToShow },
+	attributes: { collection, itemsToShow, period },
 	setAttributes,
 } ) => {
 	const [ apiKey, setApiKey ] = useEntityProp( 'root', 'site', 'profile_blocks_lastfm_api_key' );
@@ -77,7 +78,7 @@ const Edit = ( {
 						{
 							collection,
 							limit: itemsToShow,
-							period: '7day',
+							period: period || '7day',
 						}
 					),
 				} );
@@ -92,7 +93,7 @@ const Edit = ( {
 		};
 
 		fetchItems();
-	}, [ apiKey, collection, itemsToShow, showSetup ] );
+	}, [ apiKey, collection, itemsToShow, period, showSetup ] );
 
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps );
@@ -159,7 +160,7 @@ const Edit = ( {
 				<ToolsPanel
 					label={ __( 'Settings', 'profile-blocks-lastfm' ) }
 					resetAll={ () => {
-						setAttributes( { itemsToShow: 6 } );
+						setAttributes( { itemsToShow: 6, period: '7day' } );
 					} }
 				>
 					<ToolsPanelItem
@@ -177,6 +178,28 @@ const Edit = ( {
 							min={ 1 }
 							max={ 20 }
 							required
+						/>
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Period', 'profile-blocks-lastfm' ) }
+						hasValue={ () => period !== '7day' }
+						onDeselect={ () => setAttributes( { period: '7day' } ) }
+						isShownByDefault
+					>
+						<SelectControl
+							label={ __( 'Period', 'profile-blocks-lastfm' ) }
+							value={ period || '7day' }
+							options={ [
+								{ label: __( 'Overall', 'profile-blocks-lastfm' ), value: 'overall' },
+								{ label: __( 'Last 7 Days', 'profile-blocks-lastfm' ), value: '7day' },
+								{ label: __( 'Last 1 Month', 'profile-blocks-lastfm' ), value: '1month' },
+								{ label: __( 'Last 3 Months', 'profile-blocks-lastfm' ), value: '3month' },
+								{ label: __( 'Last 6 Months', 'profile-blocks-lastfm' ), value: '6month' },
+								{ label: __( 'Last 12 Months', 'profile-blocks-lastfm' ), value: '12month' },
+							] }
+							onChange={ ( value ) => setAttributes( { period: value } ) }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
