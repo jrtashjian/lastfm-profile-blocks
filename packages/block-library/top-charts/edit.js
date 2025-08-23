@@ -32,16 +32,16 @@ const PLACEHOLDER_RESPONSE = [
 	{
 		artist: {
 			url: 'https://www.last.fm/music/Fake+Artist',
-			name: 'Fake Artist',
+			name: __( 'Fake Artist', 'profile-blocks-lastfm' ),
 			playcount: '987',
 		},
 		album: {
-			name: 'Imaginary Album',
+			name: __( 'Imaginary Album', 'profile-blocks-lastfm' ),
 			url: 'https://www.last.fm/music/Fake+Artist/Imaginary+Album',
 			playcount: '42',
 		},
 		track: {
-			name: 'Sample Track',
+			name: __( 'Sample Track', 'profile-blocks-lastfm' ),
 			url: 'https://www.last.fm/music/Fake+Artist/_/Sample+Track',
 			playcount: '17',
 		},
