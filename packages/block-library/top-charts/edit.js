@@ -9,7 +9,10 @@ import {
 	BlockControls,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { useEntityProp } from '@wordpress/core-data';
+import {
+	useEntityProp,
+	store as coreDataStore,
+} from '@wordpress/core-data';
 import { useEffect, useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
@@ -27,6 +30,7 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
+import { useSelect } from '@wordpress/data';
 
 const PLACEHOLDER_RESPONSE = [
 	{
@@ -57,16 +61,22 @@ const Edit = ( {
 
 	const [ showSetup, setShowSetup ] = useState( false );
 
+	// Check if user can edit site settings.
+	const canUserEdit = useSelect( ( select ) => {
+		const { canUser } = select( coreDataStore );
+		return !! canUser( 'update', { kind: 'root', name: 'site' } );
+	}, [] );
+
 	// Show setup form if API key is missing.
 	useEffect( () => {
-		setShowSetup( typeof apiKey === 'undefined' || ! apiKey || apiKey !== apiKeyFull );
-	}, [ apiKey, apiKeyFull ] );
+		setShowSetup( canUserEdit && ( typeof apiKey === 'undefined' || ! apiKey || apiKey !== apiKeyFull ) );
+	}, [ canUserEdit, apiKey, apiKeyFull ] );
 
 	const [ items, setItems ] = useState( [] );
 
 	// Fetch items from Last.fm when API key is set.
 	useEffect( () => {
-		if ( ! apiKey || showSetup ) {
+		if ( ( canUserEdit && ! apiKey ) || showSetup ) {
 			return;
 		}
 
@@ -97,7 +107,7 @@ const Edit = ( {
 		};
 
 		fetchItems();
-	}, [ apiKey, collection, itemsToShow, period, defaultProfile, showSetup ] );
+	}, [ canUserEdit, apiKey, collection, itemsToShow, period, defaultProfile, showSetup ] );
 
 	const blockProps = useBlockProps();
 	const innerBlockProps = useInnerBlocksProps( blockProps );
@@ -152,15 +162,17 @@ const Edit = ( {
 
 	return (
 		<>
-			<BlockControls>
-				<ToolbarGroup>
-					<ToolbarButton
-						label={ __( 'Change Settings', 'profile-blocks-lastfm' ) }
-						icon={ edit }
-						onClick={ () => setShowSetup( true ) }
-					/>
-				</ToolbarGroup>
-			</BlockControls>
+			{ canUserEdit && (
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton
+							label={ __( 'Change Settings', 'profile-blocks-lastfm' ) }
+							icon={ edit }
+							onClick={ () => setShowSetup( true ) }
+						/>
+					</ToolbarGroup>
+				</BlockControls>
+			) }
 			<InspectorControls>
 				<ToolsPanel
 					label={ __( 'Settings', 'profile-blocks-lastfm' ) }
